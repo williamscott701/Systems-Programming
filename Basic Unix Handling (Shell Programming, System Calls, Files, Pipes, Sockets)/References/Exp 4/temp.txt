@@ -1,0 +1,161 @@
+echo "Please select the required operation"
+echo "1.Decimal to Binary"
+echo "2.Binary to Decimal"
+echo "3.Decimal to Octal"
+echo "4.Octal to Decimal"
+echo "5.Octal to Binary"
+echo "6.Binary to Octal"
+echo "7.Decimal to Hexadecimal"
+echo "8.HexaDecimal to Decimal"
+read input
+r=0
+case $input in
+ 1)echo "Enter the Decimal value :"
+ read num
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 2`
+  num=`expr $num \/ 2`
+  res="$r$res"
+ done
+ echo "Binary value : " $res
+ ;;
+ 2)echo "Enter the Binary value :"
+ read num
+ i=0
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 10`
+  num=`expr $num \/ 10`
+  re=`echo 2 ^ $i |bc`
+  ree=`expr $r \* $re`
+  res=`expr $res + $ree`
+  i=`expr $i + 1`
+ done
+ echo "DECIMAL VALUE :" $res
+ ;;
+ 3)echo "Enter the Decimal value:"
+ read num
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 8`
+  num=`expr $num \/ 8`
+  res="$r$res"
+done
+ echo "OCTAL value : " $res
+ ;;
+ 4)echo "Enter the Octal value :"
+ read num
+ i=0
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 10`
+  num=`expr $num \/ 10`
+  re=`echo 8 ^ $i |bc`
+  ree=`expr $r \* $re`
+  res=`expr $res + $ree`
+  i=`expr $i + 1`
+ done
+ echo "DECIMAL VALUE :" $res
+ ;;
+ 6)echo "Enter the Binary value :"
+ read num
+ for (( i=1; i<4;i++))
+ do
+  r=`expr $num \% 10`
+  num=`expr $num \/ 10`
+  num1="$r$num1"
+ done
+ until [ $num -eq 0 ]
+ do
+  r1=`expr $num \% 10`
+  num=`expr $num \/ 10`
+  num2="$r1$num2"
+ done
+ i=0
+ while [ $num1 -ne 0 ]
+ do
+  r=`expr $num1 \% 10`
+  num1=`expr $num1 \/ 10`
+  re=`echo 2 ^ $i |bc`
+  ree=`expr $r \* $re`
+  res1=`expr $res1 + $ree`
+  i=`expr $i + 1`
+ done
+ res="$res2$res1"
+ echo "Octal value : " $res
+ ;;
+ 5)echo "Enter the Octal value :"
+ read num
+ i=0
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 10`
+  num=`expr $num \/ 10`
+  re=`echo 8 ^ $i |bc`
+  ree=`expr $r \* $re`
+  res=`expr $res + $ree`
+  i=`expr $i + 1`
+ done
+ num=$res
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 2`
+  num=`expr $num \/ 2`
+  res1="$r$res1"
+ done
+ echo "Binary value : " $res
+ ;;
+ 7)echo "Enter the Decimal value:"
+ read num
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 16`
+  num=`expr $num \/ 16`
+  case $r in
+   10)r='A'
+    ;;
+   11)r='B'
+   ;;
+12)r='C'
+   ;;
+   13)r='D'
+   ;;
+   14)r='E'
+   ;;
+   15)r='F'
+   ;;
+  esac
+  res="$r$res"
+ done
+ echo "Hexadecimal value :" $res
+ ;;
+ 8)echo "Enter the HexaDecimal value :"
+ read num
+ i=0
+ while [ $num -ne 0 ]
+ do
+  r=`expr $num \% 10`
+  num=`expr $num \/ 10`
+  case $r in
+  'A')r=10
+  ;;
+  'B')r=11
+  ;;
+  'C')r=12
+  ;;
+  'D')r=13
+  ;;
+  'E')r=14
+  ;;
+  'F')r=15
+  ;;
+  esac
+ re=`echo 16 ^ $i |bc`
+ ree=`expr $r \* $re`
+ res=`expr $res + $ree`
+ i=`expr $i + 1`
+ done
+ echo "DECIMAL VALUE :" $res
+ ;;
+esac

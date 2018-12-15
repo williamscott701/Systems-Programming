@@ -1,0 +1,90 @@
+mkdir .scott
+ls -a
+
+
+cat > file1
+This is file1 data
+cat > file2
+This is file2 data
+cat file1 file2 > file3
+
+
+wc -w file3
+
+ls -a
+
+mkdir exp1
+ls
+mv file1 file2 file3 -t exp1
+ls
+ls exp1
+
+
+cat > file1.txt
+This is a text file
+cat > file2.txt
+this is another text file
+ls -l *.txt
+ls
+
+
+touch unix.txt unix.cse unix.y
+ls
+
+
+ls -l | wc -l
+
+
+9.
+cat > student
+regno	name	dept	selective
+230	ravi	cse	evs
+256	puli	emt	cad
+257	scott	ece	datawarehouse
+222	kate	eie	business
+grep cad student
+
+
+
+cut -f 2 student | grep 'r*'
+
+
+cut -f 2 student | sort
+
+
+
+mv student studentdetails
+ls
+
+
+ln studentdetails studentbackup
+
+
+cut -f 1,2 studentdetails
+
+
+wc -l studentdetails
+
+
+10.
+mkdir y
+mv *.y y
+ls y
+
+
+rm -r y
+
+
+mkdir -p a/b/c
+ls a
+ls a/b
+
+
+
+who > user.txt
+
+
+echo 20 07 1994 > scott
+cut -f 1 -d " " scott
+cut -f 2 -d " " scott
+cut -f 3 -d " " scott
